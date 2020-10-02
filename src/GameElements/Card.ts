@@ -1,4 +1,5 @@
-import { ValueInterface } from "../Interfaces/ValueInterface";
+import { ICard } from "../Interfaces/ICard";
+import { IValue } from "../Interfaces/IValue";
 
 export default class Card {
     
@@ -11,7 +12,7 @@ export default class Card {
     private static validRanks: string[] = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];
     private static validSuits: string[] = ['s', 'h', 'c', 'd'];
 
-    private static values : ValueInterface = {
+    private static values : IValue = {
         '2': 2,
         '3': 3,
         '4': 5,
@@ -45,11 +46,21 @@ export default class Card {
         return this.rank + this.suit;
     }
 
-    public getRankValue(): number {
+    getRankValue(): number {
         return this.rankValue;
     }
 
-    public getSuitValue(): number {
+    getSuitValue(): number {
         return this.suitValue;
+    }
+
+    static areEqual(first: Card, second: Card): boolean {
+        const firstCard = first as unknown as ICard;
+        const secondCard = second as unknown as ICard;
+        const properties = Object.getOwnPropertyNames(firstCard);
+        
+        return properties.every(property => {
+            return firstCard[property] == secondCard[property];
+        })
     }
 }

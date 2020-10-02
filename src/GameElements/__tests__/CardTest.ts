@@ -24,5 +24,12 @@ describe('Card', () => {
         const card = new Card('2', 's');
 
         expect(card.getSuitValue()).toEqual(53);
+    });
+
+    it('Has a way to compare card instances', () => {
+        const firstCard = new Card('Q', 'd');
+        const secondCard = new Card('Q', 'd');
+
+        expect(Card.areEqual(firstCard, secondCard)).toBeTruthy;
     })
 })

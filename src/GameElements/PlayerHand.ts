@@ -5,7 +5,7 @@ export class PlayerHand {
     private hand: Card[];
 
     constructor(firstCard: Card, secondCard: Card) {
-        if (firstCard == secondCard) {
+        if (Card.areEqual(firstCard, secondCard)) {
             throw new Error('Cards cannot be the same');
         }
         this.hand = [firstCard, secondCard];
