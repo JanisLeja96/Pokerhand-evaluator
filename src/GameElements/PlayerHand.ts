@@ -16,8 +16,8 @@ export class PlayerHand {
     }
 
     toString(): string {
-        const output = '';
-        this.hand.forEach(card => output.concat(card.toString()));
+        let output = '';
+        this.hand.forEach(card => output += card.toString());
         return output;
     }
 

@@ -10,7 +10,13 @@ describe("Player's hand", () => {
 
     it('Should throw an error when cards are the same', () => {
         expect(() => {
-            const playerHand = new PlayerHand(new Card('Q', 's'), new Card('Q', 's'));
+            new PlayerHand(new Card('Q', 's'), new Card('Q', 's'));
         }).toThrowError();
+    });
+
+    it('Can print both cards as string', () => {
+        const playerHand = new PlayerHand(new Card('Q', 'd'), new Card('Q', 's'));
+
+        expect(playerHand.toString()).toEqual('QdQs');
     })
 })
