@@ -1,4 +1,4 @@
-import Card from '../Card';
+import { Card } from '../Card';
 import { PlayerHand } from '../PlayerHand';
 
 describe("Player's hand", () => {

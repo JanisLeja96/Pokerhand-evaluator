@@ -1,7 +1,6 @@
-import { ICard } from "../Interfaces/ICard";
 import { IValue } from "../Interfaces/IValue";
 
-export default class Card {
+export class Card {
     
     private rank: string;
     private rankValue: number;
@@ -55,12 +54,16 @@ export default class Card {
     }
 
     static areEqual(first: Card, second: Card): boolean {
-        const firstCard = first as unknown as ICard;
-        const secondCard = second as unknown as ICard;
+        const firstCard = first as unknown as IValue;
+        const secondCard = second as unknown as IValue;
         const properties = Object.getOwnPropertyNames(firstCard);
         
         return properties.every(property => {
             return firstCard[property] == secondCard[property];
-        })
+        });
+    }
+
+    static removeDuplicates(cards: Card[]): Card[] {
+        return cards.filter((v,i,a)=>a.findIndex(t=>(t.suit === v.suit && t.rank===v.rank))===i);
     }
 }
