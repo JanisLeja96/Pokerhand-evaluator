@@ -33,7 +33,7 @@ export class Card {
 
     constructor(rank: string, suit: string) {
         if (!Card.validRanks.includes(rank) || !Card.validSuits.includes(suit)) {
-            throw new Error('Invalid card entered!');
+            throw new Error('Invalid card entered!' + ' Source: ' + rank);
         }
         this.rank = rank;
         this.suit = suit;
@@ -53,14 +53,16 @@ export class Card {
         return this.suitValue;
     }
 
+    getRank(): string {
+        return this.rank;
+    }
+
+    getSuit(): string {
+        return this.suit;
+    }
+
     static areEqual(first: Card, second: Card): boolean {
-        const firstCard = first as unknown as IValue;
-        const secondCard = second as unknown as IValue;
-        const properties = Object.getOwnPropertyNames(firstCard);
-        
-        return properties.every(property => {
-            return firstCard[property] == secondCard[property];
-        });
+        return first.rank == second.rank && first.suit == second.suit;
     }
 
     static removeDuplicates(cards: Card[]): Card[] {
