@@ -13,7 +13,7 @@ export class Game {
     private takenCards: Card[];
 
     constructor(board: Board, ...hands: PlayerHand[]) {
-        this.takenCards = board.getCards();
+        this.takenCards = [...board.getCards()];
 
         hands.forEach(hand => {
             this.takenCards = this.takenCards.concat(hand.getCards())
