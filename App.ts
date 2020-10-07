@@ -4,11 +4,15 @@ import { PlayerHand } from './src/GameElements/PlayerHand';
 import { Game } from './src/Components/Game';
 import { InputParser } from './src/Components/InputParser';
 import { Evaluator } from './src/Components/Evaluator';
-import fs from 'fs';
+import readline from 'readline';
 
-const gameStringArr = fs.readFileSync('games.txt').toString().split("\n");
+const input = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-gameStringArr.forEach(gameString => {
-    console.log(Game.createFromString(gameString).output());
-})
-
+input.question('Enter cards:\n', (cardsAsString) =>{
+    const game = Game.createFromString(cardsAsString);
+    console.log('Result: ' + game.output());
+    input.close();
+});
