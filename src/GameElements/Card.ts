@@ -33,7 +33,7 @@ export class Card {
 
     constructor(rank: string, suit: string) {
         if (!Card.validRanks.includes(rank) || !Card.validSuits.includes(suit)) {
-            throw new Error('Invalid card entered!' + ' Source: ' + rank);
+            throw new Error(rank+suit + ' is not a valid card!');
         }
         this.rank = rank;
         this.suit = suit;

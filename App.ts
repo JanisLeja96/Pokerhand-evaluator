@@ -1,4 +1,4 @@
-import { Game } from './src/Components/Game';
+import { Game } from './src/Core/Game';
 import readline from 'readline';
 
 const input = readline.createInterface({
@@ -7,7 +7,11 @@ const input = readline.createInterface({
 });
 
 input.question('Enter cards:\n', (cardsAsString) =>{
-    const game = Game.createFromString(cardsAsString);
-    console.log('Result: ' + game.output());
+    try {
+        const game = Game.createFromString(cardsAsString);
+        console.log('Result: ' + game.output());
+    } catch (error) {
+        console.log(error.message)
+    }
     input.close();
 });
