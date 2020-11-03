@@ -1,8 +1,12 @@
 # Texas Holdem Hand Comparison Tool
 
-To run this tool, use App.ts.
+## Usage
 
-The input is to be read from the standard input in the form of:
+To run this tool, use App.ts
+
+
+Input must be given in the following format:
+
 ```
 <5 board cards> <hand 1> <hand 2> <...> <hand N>
 ```
